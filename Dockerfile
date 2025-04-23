@@ -31,7 +31,7 @@ RUN apt update && \
     python3-venv \
     python3-rosdep \
     # GUI Tools
-    ros-${ROS_DISTRO}-rqt-image-view
+    ros-${ROS_DISTRO}-rqt-image-view \
     ros-${ROS_DISTRO}-rqt \
     ros-${ROS_DISTRO}-rqt-image-view \
     ros-${ROS_DISTRO}-rqt-graph \
@@ -49,7 +49,7 @@ RUN apt update && \
     libqt5widgets5 \
     libqt5gui5 \
     libqt5core5a \
-    qtbase5-dev
+    qtbase5-dev \
     # System Libraries: Supports USB, Image, OpenCV
     libusb-1.0-0 \
     libglib2.0-0 \
