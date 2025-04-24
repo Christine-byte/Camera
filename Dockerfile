@@ -1,5 +1,3 @@
-# # COPY ros_ws /workspace/ros_ws
-
 # Set the ROS distribution as an argument (default: jazzy)
 ARG ROS_DISTRO=jazzy
 
@@ -97,7 +95,7 @@ RUN source /opt/ros/${ROS_DISTRO}/setup.bash && \
     colcon build --parallel-workers 1
     
 # The ROS2 environment variable is automatically loaded, and the "ros2" command can be used directly in the container
-RUN echo "source /opt/ros/jazzy/setup.bash && source /workspace/dai_ws/install/setup.bash" >> /root/.bashrc
+RUN echo "source /opt/ros/jazzy/setup.bash && source /depthai_ros_workspace/install/setup.bash" >> /root/.bashrc
 
 # Default command to keep the container running (can be overridden)
 CMD ["/bin/bash"]
