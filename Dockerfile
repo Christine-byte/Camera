@@ -7,7 +7,7 @@ ARG ROS_DISTRO=jazzy
 FROM ros:${ROS_DISTRO}-ros-base
 
 # Set working directory
-WORKDIR /workspace
+WORKDIR /depthai_ros_workspace
 
 # Set bash as the default shell, so we can se pushd, source and other commands.
 SHELL ["/bin/bash", "-c"]
@@ -87,11 +87,11 @@ RUN wget -qO- https://raw.githubusercontent.com/luxonis/depthai-ros/main/install
 RUN [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ] && rosdep init || echo "rosdep already initialized" && rosdep update
 
 # create ROS2 workspace and clone depthai-ros source code
-WORKDIR /workspace/dai_ws/src
+WORKDIR /depthai_ros_workspace/src
 RUN git clone --branch ${ROS_DISTRO} https://github.com/luxonis/depthai-ros.git
 
 # Install ROS dependencies and build
-WORKDIR /workspace/dai_ws
+WORKDIR /depthai_ros_workspace
 RUN source /opt/ros/${ROS_DISTRO}/setup.bash && \
     rosdep install --from-paths src --ignore-src -r -y && \
     colcon build --parallel-workers 1
